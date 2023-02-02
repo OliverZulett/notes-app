@@ -1,0 +1,8 @@
+:host {
+  .notes {
+    &__container {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
