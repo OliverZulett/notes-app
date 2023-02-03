@@ -18,7 +18,7 @@ export class CreateNoteComponent {
   constructor(private noteService: NotesService, private router: Router) {}
 
   saveNote() {
-    this.noteService.createNote({
+    this.noteService.createNote$({
       id: uuid4(),
       createdAt: new Date(),
       noteTitle: this.noteFormControl.value.noteTitle || '',
