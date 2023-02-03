@@ -4,23 +4,18 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { NotesComponent } from './notes/notes.component';
 import { SimpleNoteComponent } from './simple-note/simple-note.component';
-
-
+import { CreateNoteComponent } from './create-note/create-note.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     FooterComponent,
     NotesComponent,
-    SimpleNoteComponent
+    SimpleNoteComponent,
+    CreateNoteComponent,
   ],
-  exports: [
-    NavbarComponent,
-    FooterComponent,
-    NotesComponent
-  ],
-  imports: [
-    CommonModule
-  ]
+  exports: [NavbarComponent, FooterComponent, NotesComponent],
+  imports: [CommonModule, ReactiveFormsModule],
 })
-export class ComponentsModule { }
+export class ComponentsModule {}

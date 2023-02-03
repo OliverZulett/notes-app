@@ -17,6 +17,10 @@ export class NotesService {
 
   constructor() {}
 
+  createNote(note: Note) {
+    this.notes.push(note);
+  }
+
   getAllNotes() {
     return this.notes;
   }

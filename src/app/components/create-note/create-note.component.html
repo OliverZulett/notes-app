@@ -1,0 +1,37 @@
+<div class="container mx-auto">
+  <div class="mx-5 sm:mx-10 mt-5">
+    <h1 class="text-2xl">Create Note</h1>
+  </div>
+  <form
+    [formGroup]="noteFormControl"
+    (ngSubmit)="saveNote()"
+    class="m-5 sm:m-10"
+  >
+    <div class="form-control">
+      <label class="label">
+        <span class="label-text">Note Title</span>
+      </label>
+      <input
+        formControlName="noteTitle"
+        type="text"
+        placeholder="note title"
+        class="input input-bordered"
+      />
+    </div>
+    <div class="form-control">
+      <label class="label">
+        <span class="label-text">Note Content</span>
+      </label>
+      <textarea
+        formControlName="noteContent"
+        class="input input-bordered h-40"
+      ></textarea>
+    </div>
+    <div class="mt-5">
+      <button type="submit" class="btn btn-success">Save</button>
+      <button (click)="cancelEdition()" class="btn btn-error ml-5">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>
