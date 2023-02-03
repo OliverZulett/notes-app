@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Note } from 'src/app/models/note.models';
 import { NotesService } from '../../services/notes.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter, switchMap, Observable } from 'rxjs';
+import { filter, switchMap, Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-update-note',
@@ -25,13 +25,17 @@ export class UpdateNoteComponent implements OnInit {
       switchMap((params: any) => {
         this.noteId = params.get('id');
         return this.noteService.getNoteById$(this.noteId);
-      })
+      }),
+      tap(console.log)
     );
   }
 
-  updateNote() {
-    
+  updateNote(note: Note) {
+    this.noteService.updateNote$(this.noteId, note);
+    this.router.navigate(['/notes']);
   }
 
-  cancelEdition() {}
+  cancelEdition() {
+    this.router.navigate(['/notes']);
+  }
 }

@@ -2,14 +2,20 @@
   <div class="mx-5 sm:mx-10 mt-5">
     <h1 class="text-2xl">Update Note</h1>
   </div>
-  <ng-container *ngIf="(note$ | async) as note">
-    <form #noteForm="" ngForm (ngSubmit)="updateNote()" class="m-5 sm:m-10">
+  <ng-container *ngIf="note$ | async as note">
+    <form
+      #noteForm="ngForm"
+      ngForm
+      (ngSubmit)="updateNote(note)" 
+      class="m-5 sm:m-10"
+    >
       <div class="form-control">
         <label class="label">
           <span class="label-text">Note Title</span>
         </label>
         <input
           [(ngModel)]="note.noteTitle"
+          name="noteTitle"
           type="text"
           placeholder="note title"
           class="input input-bordered"
@@ -21,6 +27,7 @@
         </label>
         <textarea
           [(ngModel)]="note.noteContent"
+          name="noteContent"
           class="input input-bordered h-40"
         ></textarea>
       </div>

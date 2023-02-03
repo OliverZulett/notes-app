@@ -1,11 +1,17 @@
 <div class="card bg-neutral text-neutral-content m-5">
-  <div class="card-body items-center text-center">
-    <h2 class="card-title">{{ note.noteTitle }}</h2>
-    <p>{{ note.noteContent }}</p>
-    <p>Created At: {{ note.createdAt | date }}</p>
-    <p *ngIf="note.updatedAt">Updated At: {{ note.updatedAt | date }}</p>
-    <div class="card-actions justify-end">
-      <button class="btn btn-success">
+  <div class="card-body">
+    <div class="flex justify-center">
+      <h2 class="card-title">{{ note.noteTitle }}</h2>
+    </div>
+    <div class="text-left">
+      <p>{{ note.noteContent }}</p>
+    </div>
+    <div class="my-3">
+      <p>Created At: {{ note.createdAt | date }}</p>
+      <p *ngIf="note.updatedAt">Updated At: {{ note.updatedAt | date }}</p>
+    </div>
+    <div class="card-actions justify-center">
+      <button (click)="editNote(note.id)" class="btn btn-success btn-sm">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -22,7 +28,7 @@
         </svg>
         Edit
       </button>
-      <button (click)="removeNote(note.id)" class="btn btn-error">
+      <button (click)="removeNote(note.id)" class="btn btn-error btn-sm">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
