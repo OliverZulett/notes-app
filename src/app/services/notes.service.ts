@@ -7,24 +7,6 @@ import { LocalStorageService } from './local-storage.service';
   providedIn: 'root',
 })
 export class NotesService {
-  private JsonNotesPath = 'assets/notes.json';
-
-  private notes: Array<Note> = [
-    {
-      id: '01',
-      createdAt: new Date(),
-      noteTitle: 'learn angular',
-      noteContent: 'learn angular',
-      updatedAt: new Date(),
-    },
-    {
-      id: '6ba7b810-9dad-11d1-80b4-00c04fd430c8',
-      noteTitle: 'First Note',
-      noteContent: 'This is the content of the first note.',
-      createdAt: new Date(),
-    },
-  ];
-
   private notes$ = new BehaviorSubject<Array<Note>>([]);
 
   constructor(private localStorageService: LocalStorageService) {
@@ -63,6 +45,17 @@ export class NotesService {
       .filter((note) => note.id !== noteId);
     this.localStorageService.saveNotes(newNotes);
     this.notes$.next(newNotes);
+  }
+
+  searchNotes$(noteTitle: string) {
+    if (noteTitle.length === 0) {
+      this.notes$.next(this.localStorageService.getNotes());
+      return;
+    }
+    const notesFound = this.localStorageService
+      .getNotes()
+      .filter((note) => note.noteTitle.toLowerCase().includes(noteTitle));
+    this.notes$.next(notesFound);
   }
 
   private loadNotes() {

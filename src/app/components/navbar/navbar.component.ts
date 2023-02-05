@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
 import { NotesService } from '../../services/notes.service';
 
 @Component({
@@ -8,11 +7,9 @@ import { NotesService } from '../../services/notes.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  constructor(private NoteService: NotesService) {
-  }
+  constructor(private noteService: NotesService) {}
 
   searchNote(event: any) {
-    console.log(event.target.value);
-    
+    this.noteService.searchNotes$(event.target.value);
   }
 }

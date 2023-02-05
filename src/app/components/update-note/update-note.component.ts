@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Note } from 'src/app/models/note.models';
 import { NotesService } from '../../services/notes.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter, switchMap, Observable, tap } from 'rxjs';
+import { switchMap, Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-update-note',
