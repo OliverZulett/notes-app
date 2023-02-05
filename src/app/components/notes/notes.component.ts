@@ -17,7 +17,6 @@ export class NotesComponent implements OnInit {
   constructor(private noteService: NotesService, private router: Router) {}
 
   ngOnInit(): void {
-    this.notes = this.noteService.getAllNotes();
     this.notes$ = this.noteService.getAllNotes$();
   }
 
